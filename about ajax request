@@ -1,0 +1,15 @@
+1、描述一下ajax请求过程
+	ajax即异步的javascript and xml，里面封装了xmlHttpRequest对象，是完全兼容http的。
+	ajax在请求服务器时会传递一些参数，包括data，type，dataType，url，async，success，error。
+	ajax请求的核心是xmlHttpRequest，当xhr对象把一个http请求发送到服务器到浏览器获取响应的整个过程会经过5次状态的改变，
+  readystate就是xhr请求的状态属性，0（未初始化）还没有调用open()方法 ，1（载入）已调用send()方法，正在发送请求， 
+  2(载入完成)send()方法完成，已收到全部响应内容， 3(解析)正在解析响应内容 ，4（完成）响应内容解析完成，可以再客户端使用了。
+	Xhr.open(type,url,async);
+	Xhr.send();//get请求无参数，post请求有参数
+	if（xhr.readyState == 4 && xhr.status == 200）{
+		oB.innerHTML = xhr.responseText;
+		//向节点填充数据
+	}
+	
+服务器在接收到请求后会做出相应的响应，响应的内容会实时填充到xhr的相应属性中，一般是response属性，再由浏览器解析数据。
+浏览器在收到数据后会调用回调函数，回调函数的参数是服务器返回的数据。
